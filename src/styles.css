@@ -1,0 +1,192 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: #f3f3f3;
+  background: #111015;
+  line-height: 1.45;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #221922 0%, #111015 45%);
+}
+
+button {
+  font: inherit;
+}
+
+.app-shell {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #29242f;
+  border-right: 1px solid #29242f;
+  background: rgba(17, 16, 21, 0.95);
+}
+
+.top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: 1rem;
+  backdrop-filter: blur(8px);
+  background: rgba(17, 16, 21, 0.9);
+  border-bottom: 1px solid #2d2733;
+}
+
+.kicker {
+  margin: 0;
+  color: #c8a4af;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+h1 {
+  margin: 0.25rem 0 0;
+  font-size: 1.8rem;
+}
+
+.content {
+  flex: 1;
+  padding: 1rem 1rem 5.25rem;
+}
+
+.stack {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.hero-card,
+.detail-card,
+.session-card,
+.image-card {
+  background: #1a1620;
+  border: 1px solid #352a39;
+  border-radius: 16px;
+}
+
+.hero-card {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.hero-card button,
+.detail-card button,
+.session-card,
+.tab-bar button {
+  background: #9f1c2f;
+  color: #fff;
+  border: 0;
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+}
+
+.section-title {
+  margin: 0.5rem 0 0;
+  color: #f5d2d8;
+}
+
+.horizontal-scroll {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 80%;
+  overflow-x: auto;
+  gap: 0.8rem;
+  padding-bottom: 0.25rem;
+}
+
+.image-card {
+  overflow: hidden;
+}
+
+.image-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  filter: brightness(0.75);
+}
+
+.image-card div {
+  padding: 0.75rem;
+}
+
+.image-card h4,
+.detail-card h4,
+.session-card h4 {
+  margin: 0;
+}
+
+.image-card p,
+.detail-card p,
+.session-card p {
+  margin: 0.45rem 0 0;
+  color: #d3ced8;
+}
+
+.grid-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+}
+
+.session-card {
+  text-align: left;
+  background: #1c1620;
+  border: 1px solid #413148;
+}
+
+.session-card.active {
+  outline: 2px solid #d33b55;
+}
+
+.detail-card {
+  padding: 0.95rem;
+}
+
+.button-row {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.7rem;
+}
+
+.ghost {
+  background: transparent !important;
+  border: 1px solid #5c4c61 !important;
+  color: #f3f3f3;
+}
+
+.source {
+  color: #c39daa !important;
+  font-size: 0.92rem;
+}
+
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  width: min(480px, 100%);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.4rem;
+  padding: 0.55rem;
+  background: rgba(20, 15, 22, 0.96);
+  border-top: 1px solid #372b3d;
+}
+
+.tab-bar button {
+  font-size: 0.78rem;
+  background: #2a1f2f;
+  color: #d7cdd8;
+}
+
+.tab-bar button.active {
+  background: #9f1c2f;
+  color: #fff;
+}

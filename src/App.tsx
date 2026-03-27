@@ -8,9 +8,15 @@ import {
   type PrayerSession,
 } from './data'
 
-type Tab = 'Home' | 'Pray' | 'Learn' | 'Converse' | 'Profile'
+type Tab = 'Home' | 'Learn' | 'Converse' | 'Pray' | 'Profile'
 
-const tabs: Tab[] = ['Home', 'Pray', 'Learn', 'Converse', 'Profile']
+const tabs: { key: Tab; icon: string }[] = [
+  { key: 'Home', icon: '🏠' },
+  { key: 'Learn', icon: '📘' },
+  { key: 'Converse', icon: '💬' },
+  { key: 'Pray', icon: '🕊️' },
+  { key: 'Profile', icon: '👤' },
+]
 
 function speakText(text: string) {
   if (!('speechSynthesis' in window)) {
@@ -27,18 +33,22 @@ function speakText(text: string) {
 
 function ModuleCard({ module }: { module: LaunchModule }) {
   return (
-    <article className="detail-card">
-      <p className="module-id">{module.id.toUpperCase()}</p>
+    <article className="module-card">
+      <div className="module-card-header">
+        <p className="module-id">{module.id.toUpperCase()}</p>
+        <span className="pill neutral">{module.duration}</span>
+      </div>
       <h4>{module.title}</h4>
       <p>{module.summary}</p>
-      <p className="source">Duration: {module.duration}</p>
       <ul className="point-list">
         {module.keyPoints.map((point) => (
           <li key={point}>{point}</li>
         ))}
       </ul>
       <p className="source">Sources: {module.sourceStack.join(' • ')}</p>
-      <button onClick={() => speakText(module.audioScript)}>▶ Play Draft Audio</button>
+      <button className="primary-button" onClick={() => speakText(module.audioScript)}>
+        Listen Now ▶
+      </button>
     </article>
   )
 }
@@ -54,27 +64,69 @@ function App() {
   const converseModules = useMemo(() => getModulesByTrack('Converse'), [])
 
   const title = useMemo(() => {
-    if (activeTab === 'Home') return 'Start Today'
+    if (activeTab === 'Home') return 'Credo Path'
     return activeTab
   }, [activeTab])
 
   return (
     <div className="app-shell">
       <header className="top-bar">
-        <p className="kicker">Catholic Formation</p>
+        <p className="kicker">Catholic Formation App</p>
         <h1>{title}</h1>
       </header>
 
       <main className="content">
         {activeTab === 'Home' && (
           <section className="stack">
-            <article className="hero-card">
-              <div>
-                <h2>30 Launch Modules Ready</h2>
-                <p>{first30LaunchModules.length} modules drafted across Pray, Learn, and Converse.</p>
+            <article className="glass-card">
+              <h2>Good Morning, Sarah</h2>
+              <div className="separator" />
+              <p className="eyebrow">Continue Listening</p>
+              <div className="row between">
+                <div>
+                  <h3>Why Believe in God?</h3>
+                  <p className="small">3 mins left</p>
+                </div>
+                <button className="primary-button">Resume</button>
               </div>
-              <button onClick={() => setActiveTab('Pray')}>View Modules</button>
             </article>
+
+            <article className="glass-card">
+              <p className="section-icon">✝ Today&apos;s Prayer</p>
+              <div className="row between prayer-row">
+                <div>
+                  <h3>{selectedSession?.title ?? 'Morning Offering'}</h3>
+                </div>
+                <button
+                  className="secondary-button"
+                  onClick={() => selectedSession && speakText(selectedSession.text)}
+                >
+                  Listen Now
+                </button>
+              </div>
+            </article>
+
+            <div className="row chips-wrap">
+              <button className="pill active">❤ Apologetics</button>
+              <button className="pill">💬 Conversations</button>
+            </div>
+
+            <article className="glass-card">
+              <p className="section-icon">💬 Practice Conversations</p>
+              <div className="row chips-wrap">
+                <button className="mini-chip">Atheist</button>
+                <button className="mini-chip">Muslim</button>
+                <button className="mini-chip">Friend</button>
+                <button className="mini-chip">Skeptic</button>
+              </div>
+            </article>
+
+            <div className="row feature-grid">
+              <button className="feature-card active">Apologetics</button>
+              <button className="feature-card">Understanding Faith</button>
+              <button className="feature-card">Prayer Reflection</button>
+              <button className="feature-card">Scripture</button>
+            </div>
 
             <h3 className="section-title">Daily Focus</h3>
             <div className="horizontal-scroll">
@@ -88,15 +140,6 @@ function App() {
                 </article>
               ))}
             </div>
-
-            {selectedSession && (
-              <article className="detail-card">
-                <h4>Quick Pray</h4>
-                <p>{selectedSession.title}</p>
-                <p>{selectedSession.text}</p>
-                <button onClick={() => speakText(selectedSession.text)}>▶ Pray with Audio</button>
-              </article>
-            )}
           </section>
         )}
 
@@ -144,17 +187,17 @@ function App() {
 
         {activeTab === 'Profile' && (
           <section className="stack">
-            <article className="detail-card">
+            <article className="module-card">
               <h4>Launch Content Progress</h4>
               <p>Pray modules: {prayModules.length} / 12</p>
               <p>Learn modules: {learnModules.length} / 10</p>
               <p>Converse modules: {converseModules.length} / 8</p>
             </article>
-            <article className="detail-card">
+            <article className="module-card">
               <h4>Next Step</h4>
               <p>
-                Review content tone and theology, then we can move into Phase 2 UX polish with your
-                new graphics.
+                Once your graphics are ready, we can wire your brand imagery directly into the home
+                cards, launcher icon, and module covers.
               </p>
             </article>
           </section>
@@ -164,11 +207,12 @@ function App() {
       <nav className="tab-bar">
         {tabs.map((tab) => (
           <button
-            key={tab}
-            className={tab === activeTab ? 'active' : ''}
-            onClick={() => setActiveTab(tab)}
+            key={tab.key}
+            className={tab.key === activeTab ? 'active' : ''}
+            onClick={() => setActiveTab(tab.key)}
           >
-            {tab}
+            <span>{tab.icon}</span>
+            <span>{tab.key}</span>
           </button>
         ))}
       </nav>

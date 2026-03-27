@@ -8,14 +8,14 @@ import {
   type PrayerSession,
 } from './data'
 
-type Tab = 'Home' | 'Learn' | 'Converse' | 'Pray' | 'Profile'
+type Tab = 'Home' | 'Pray' | 'Learn' | 'Converse' | 'Profile'
 
 const tabs: { key: Tab; icon: string }[] = [
-  { key: 'Home', icon: '🏠' },
-  { key: 'Learn', icon: '📘' },
-  { key: 'Converse', icon: '💬' },
-  { key: 'Pray', icon: '🕊️' },
-  { key: 'Profile', icon: '👤' },
+  { key: 'Home', icon: '•' },
+  { key: 'Pray', icon: '•' },
+  { key: 'Learn', icon: '•' },
+  { key: 'Converse', icon: '•' },
+  { key: 'Profile', icon: '•' },
 ]
 
 function speakText(text: string) {

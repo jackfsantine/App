@@ -151,21 +151,26 @@ h1 {
   padding: 0.95rem;
 }
 
-.button-row {
-  display: flex;
-  gap: 0.6rem;
-  margin-top: 0.7rem;
-}
-
-.ghost {
-  background: transparent !important;
-  border: 1px solid #5c4c61 !important;
-  color: #f3f3f3;
-}
-
 .source {
   color: #c39daa !important;
   font-size: 0.92rem;
+}
+
+.module-id {
+  margin: 0 0 0.25rem !important;
+  color: #f5d2d8 !important;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+}
+
+.point-list {
+  margin: 0.7rem 0;
+  padding-left: 1.1rem;
+}
+
+.point-list li {
+  margin-bottom: 0.35rem;
+  color: #ddd6e0;
 }
 
 .tab-bar {

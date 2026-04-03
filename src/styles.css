@@ -1,0 +1,332 @@
+:root {
+  --bg-primary: #121417;
+  --bg-secondary: #1b1f24;
+  --bg-gradient-start: #101317;
+  --bg-gradient-end: #1f242b;
+
+  --text-primary: #f5f5f5;
+  --text-secondary: #a0a6b1;
+  --soft-light: #e8e6e1;
+
+  --red-primary: #d32f2f;
+  --red-bright: #e53935;
+  --red-deep: #b71c1c;
+
+  font-family: Inter, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--text-primary);
+  background: linear-gradient(165deg, var(--bg-gradient-start), var(--bg-gradient-end));
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.app-shell {
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  background: linear-gradient(175deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+  box-shadow: 0 24px 72px rgba(0, 0, 0, 0.55);
+}
+
+.top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: 1.15rem 1rem;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(180deg, rgba(16, 19, 23, 0.97), rgba(27, 31, 36, 0.85));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.kicker {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+h1 {
+  margin: 0.35rem 0 0;
+  font-size: 1.82rem;
+  font-weight: 700;
+}
+
+.content {
+  flex: 1;
+  padding: 1.2rem 1rem 6.5rem;
+}
+
+.stack {
+  display: grid;
+  gap: 1.15rem;
+}
+
+.glass-card,
+.module-card,
+.session-card,
+.image-card,
+.feature-card,
+.mini-chip,
+.pill,
+.secondary-button {
+  background: var(--bg-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 16px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 10px 24px rgba(0, 0, 0, 0.38);
+}
+
+.glass-card,
+.module-card {
+  padding: 1.15rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.between {
+  justify-content: space-between;
+}
+
+.separator {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  margin: 0.85rem 0;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.04em;
+}
+
+.small {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.section-icon {
+  margin: 0;
+  color: var(--soft-light);
+  font-weight: 600;
+}
+
+.prayer-row h3,
+.glass-card h3 {
+  margin: 0;
+}
+
+.primary-button {
+  border: 1px solid var(--red-bright);
+  color: var(--text-primary);
+  background: linear-gradient(180deg, var(--red-bright) 0%, var(--red-primary) 100%);
+  border-radius: 12px;
+  padding: 0.62rem 1rem;
+  font-weight: 700;
+  box-shadow: 0 8px 16px rgba(183, 28, 28, 0.4);
+}
+
+.primary-button:hover {
+  background: linear-gradient(180deg, var(--red-bright) 0%, var(--red-bright) 100%);
+}
+
+.primary-button:active {
+  background: linear-gradient(180deg, var(--red-primary) 0%, var(--red-deep) 100%);
+}
+
+.secondary-button {
+  border-radius: 12px;
+  color: var(--text-primary);
+  padding: 0.62rem 0.95rem;
+}
+
+.pill {
+  border-radius: 999px;
+  padding: 0.55rem 0.9rem;
+  color: var(--text-primary);
+}
+
+.pill.neutral {
+  font-size: 0.8rem;
+  padding: 0.36rem 0.7rem;
+  background: rgba(232, 230, 225, 0.1);
+}
+
+.pill.active {
+  background: linear-gradient(180deg, var(--red-bright) 0%, var(--red-primary) 100%);
+  border-color: var(--red-bright);
+}
+
+.chips-wrap {
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.mini-chip {
+  border-radius: 11px;
+  color: var(--text-primary);
+  padding: 0.52rem 0.75rem;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+}
+
+.feature-card {
+  text-align: center;
+  padding: 0.75rem 0.6rem;
+  color: var(--text-primary);
+}
+
+.feature-card.active {
+  border-color: var(--red-bright);
+  background: linear-gradient(180deg, var(--red-bright) 0%, var(--red-primary) 100%);
+}
+
+.section-title {
+  margin: 0.3rem 0 0.2rem;
+  color: var(--text-primary);
+}
+
+.horizontal-scroll {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 88%;
+  overflow-x: auto;
+  gap: 1rem;
+  padding-bottom: 0.35rem;
+}
+
+.image-card {
+  overflow: hidden;
+}
+
+.image-card img {
+  width: 100%;
+  height: 136px;
+  object-fit: cover;
+  filter: brightness(0.68);
+}
+
+.image-card div {
+  padding: 0.95rem;
+}
+
+.image-card h4,
+.module-card h4,
+.session-card h4 {
+  margin: 0;
+}
+
+.image-card p,
+.module-card p,
+.session-card p {
+  margin: 0.5rem 0 0;
+  color: var(--text-secondary);
+}
+
+.grid-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+}
+
+.session-card {
+  text-align: left;
+  padding: 0.95rem;
+}
+
+.session-card.active {
+  border-color: var(--red-bright);
+  outline: 1px solid var(--red-bright);
+}
+
+.module-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.source {
+  color: var(--text-secondary) !important;
+  font-size: 0.9rem;
+}
+
+.module-id {
+  margin: 0 0 0.25rem !important;
+  color: var(--soft-light) !important;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+}
+
+.point-list {
+  margin: 0.85rem 0;
+  padding-left: 1.1rem;
+}
+
+.point-list li {
+  margin-bottom: 0.42rem;
+  color: var(--text-primary);
+}
+
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  width: min(430px, 100%);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.38rem;
+  padding: 0.62rem;
+  background: linear-gradient(180deg, var(--bg-gradient-end), var(--bg-primary));
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 20px 20px 0 0;
+}
+
+.tab-bar button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.18rem;
+  font-size: 0.72rem;
+  padding: 0.52rem 0.25rem;
+  border: 0;
+  border-radius: 12px;
+  color: var(--text-secondary);
+  background: transparent;
+}
+
+.tab-bar button.active {
+  color: var(--text-primary);
+  background: linear-gradient(180deg, var(--red-bright) 0%, var(--red-primary) 100%);
+  box-shadow: 0 6px 12px rgba(183, 28, 28, 0.4);
+}

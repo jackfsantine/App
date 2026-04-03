@@ -37,4 +37,4 @@ Reference: Concept Design Outline Doc [03_26_2026]
 
 Overview:  Practical launch module set with balanced Pray/Learn/Converse integration.
 
-Navigation: Home | Pray | Learn | Converse | Profile
+Navigation: Home | Pray | Library | Bible | Charity | Learn | Converse | Profile
